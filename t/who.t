@@ -23,6 +23,7 @@ is $t->enclosed_tag(a => href => 'http://' => 'alt') =>
 is $t->enclosed_tag(a => href => 'http://' => border => 0) =>
   '<a href="http://" border="0" />';
 is $t->text_node('text') => 'text';
+is $t->examine(h1 => ['hello']) => '<h1>hello</h1>';
 is $t->examine(a => href => 'http://' => 'alt' => ['link']) =>
   '<a href="http://" alt>link</a>';
 is $t->examine(
