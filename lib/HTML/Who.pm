@@ -91,7 +91,7 @@ L<HTML::Who> serializes data structures similiar to Common Lisp's cl-who to HTML
     [h1 => 'hello'],
     [a => href => 'http://mojolicio.us', class => 'nav',
       [img => src => 'image.png']],
-    [a => href => 'http://mojocasts.com', ['screencasts']
+    [a => href => 'http://mojocasts.com', ['screencasts']]
   );
 
   # Serializes to (without line-breaks)
@@ -128,7 +128,7 @@ The following form is accepted:
 
 =back
 
-  [tag => attribute_name => attribute_value => 
+  [tag => attribute_name => attribute_value =>
     [anothertag => attribute_name => attribute_value]]
 
 =over 2
