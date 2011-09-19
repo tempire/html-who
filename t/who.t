@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::Most;
+use Test::More;
 use HTML::Who;
 
 my $t = HTML::Who->new;
