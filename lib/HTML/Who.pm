@@ -16,7 +16,10 @@ sub examine {
 
   # Decend into child
   my @children = @{+pop};
-  return $self->open_tag(@_) . $self->examine(@children) . $self->close_tag(@_);
+  return
+      $self->open_tag(@_)
+    . $self->examine(@children)
+    . $self->close_tag(@_);
 }
 
 sub open_tag {
@@ -27,7 +30,7 @@ sub open_tag {
 
   # attributes
   my $count = @_;
-  for (my $i=0; $i<$count, @_, @_>1; $i=$i+2) {
+  for (my $i = 0; $i < $count, @_, @_ > 1; $i = $i + 2) {
     $tag .= sprintf(' %s="%s"', shift, shift);
   }
 
@@ -43,7 +46,9 @@ sub close_tag {
   return '</' . shift . '>';
 }
 
-sub text_node { return pop }
+sub text_node {
+  return pop;
+}
 
 sub enclosed_tag {
   my $self = shift;
