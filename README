@@ -1,3 +1,0 @@
-Perl revision of basic cl-who functionality.
-
-No loop support currently, looking for a Perlish way to implement similar functionality.
