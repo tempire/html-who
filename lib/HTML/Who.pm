@@ -16,13 +16,14 @@ sub html {
 sub examine {
   my $self = shift;
 
-  # tag - base case (<img src="image.png" />)
+  # Tag - base case
   return $self->enclosed_tag(@_) if $self->has_no_children(@_);
 
-  # descend into child, wrapped with tag
+  # Decend into child
+  my @children = @{+pop};
   return
       $self->open_tag(@_)       # <a href="http://mojolicio.us">
-    . $self->examine(@{+pop})     # children: arrayref with text node or element
+    . $self->examine(@children)   # text node or child element
     . $self->close_tag(@_);     # </a>
 }
 
