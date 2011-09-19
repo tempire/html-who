@@ -16,15 +16,14 @@ sub html {
 sub examine {
   my $self = shift;
 
-  # Tag - base case
+  # tag - base case (<img src="image.png" />)
   return $self->enclosed_tag(@_) if $self->has_no_children(@_);
 
-  # Decend into child
-  my @children = @{+pop};
+  # descend into child, wrapped with tag
   return
-      $self->open_tag(@_)
-    . $self->examine(@children)
-    . $self->close_tag(@_);
+      $self->open_tag(@_)       # <a href="http://mojolicio.us">
+    . $self->examine(@{+pop})     # children: arrayref with text node or element
+    . $self->close_tag(@_);     # </a>
 }
 
 sub open_tag {
@@ -34,8 +33,7 @@ sub open_tag {
   my $tag = '<' . shift;
 
   # attributes
-  my $count = @_;
-  for (my $i = 0; $i < $count, @_, @_ > 1; $i = $i + 2) {
+  for (my $i = 0; @_ > 1; $i = $i + 2) {
     $tag .= sprintf(' %s="%s"', shift, shift);
   }
 
